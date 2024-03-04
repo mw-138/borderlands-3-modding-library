@@ -1,11 +1,12 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics;
+using System.Reflection;
 using Borderlands3ModdingLibrary.Hotfixes;
 
 namespace Borderlands3ModdingLibrary.Mod;
 
 public static class Mod
 {
-    public static void Create(ModInfo info, List<Hotfix> hotfixes)
+    public static void Create(string name, string author, string description, string version, List<Hotfix> hotfixes)
     {
         string? assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         
@@ -15,21 +16,21 @@ public static class Mod
             return;
         }
 
-        string directoryPath = Path.Combine(assemblyPath, $"export/{info.Author}/{info.Name}");
+        string directoryPath = Path.Combine(assemblyPath, $"export/{author}/{name}");
 
-        string fileName = info.Name.ToLower().Replace(" ", "_");
+        string fileName = name.ToLower().Replace(" ", "_");
         string filePath = Path.Combine(directoryPath, $"{fileName}.bl3hotfix");
 
         string fileContent = $@"
 ###
-### Name: {info.Name}
-### Author: {info.Author}
-### Description: {info.Description}
-### Version: {info.Version}
+### Name: {name}
+### Author: {author}
+### Description: {description}
+### Version: {version}
 ### Last Update: {DateTime.Now}
 ### License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 ### License URL: https://creativecommons.org/licenses/by-sa/4.0/
-### Made using the Borderlands 3 Modding C# Library by mw138
+### Made using the Borderlands 3 Hotfix Modding C# Library by mw138
 ###
 ";
 
@@ -45,7 +46,7 @@ public static class Mod
         if (File.Exists(filePath))
         {
             File.WriteAllText(filePath, fileContent);
-            Console.WriteLine($"Mod '{info.Name}' updated.");
+            Console.WriteLine($"Mod '{name}' updated.");
         }
         else
         {
@@ -53,7 +54,10 @@ public static class Mod
                 Directory.CreateDirectory(directoryPath);
 
             File.WriteAllText(filePath, fileContent);
-            Console.WriteLine($"Mod '{info.Name}' created.");
+            Console.WriteLine($"Mod '{name}' created.");
         }
+
+        if (File.Exists(filePath))
+            Process.Start("explorer.exe", filePath);
     }
 }
