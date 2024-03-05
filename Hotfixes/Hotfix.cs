@@ -1,36 +1,16 @@
-﻿namespace Borderlands3ModdingLibrary.Hotfixes;
+﻿using Borderlands3ModdingLibrary.Patches;
 
-public abstract class Hotfix(string? comment)
+namespace Borderlands3ModdingLibrary.Hotfixes;
+
+public class Hotfix(string comment = "", List<Patch> patches = default)
 {
-    public virtual string GetSparkPatchEntry()
+    public virtual List<Patch> GetPatches()
     {
-        return string.Empty;
+        return patches;
     }
 
-    public virtual string GetFormattedSparkPatchEntry()
+    public virtual string GetComment()
     {
-        string retval = string.Empty;
-
-        if (!string.IsNullOrEmpty(comment))
-            retval += $"# {comment}\n";
-
-        retval += $"{GetSparkPatchEntry()}\n\n";
-        return retval;
-    }
-
-    protected virtual string GetFormattedEntries(List<Hotfix> hotfixes)
-    {
-        string retval = string.Empty;
-
-        retval += $"# Start of hotfix\n\n";
-
-        foreach (Hotfix hotfix in hotfixes)
-        {
-            retval += hotfix.GetFormattedSparkPatchEntry();
-        }
-
-        retval += $"# End of hotfix";
-
-        return retval;
+        return comment;
     }
 }

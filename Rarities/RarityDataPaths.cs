@@ -2,10 +2,19 @@
 
 public static class RarityDataPaths
 {
+    private static string GetRarityNumber(Rarity rarity)
+    {
+        return ((int)rarity + 1).ToString("00");
+    }
+
     public static string GetPath(Rarity rarity)
     {
-        string index = ((int)rarity + 1).ToString("00");
-        string str = rarity.ToString();
-        return $"/Game/GameData/Loot/RarityData/RarityData_{index}_{str}.RarityData_{index}_{str}";
+        string num = GetRarityNumber(rarity);
+        return $"/Game/GameData/Loot/RarityData/RarityData_{num}_{rarity}.RarityData_{num}_{rarity}";
+    }
+
+    public static string GetLootBeamType(Rarity rarity)
+    {
+        return $"/Game/Pickups/_Shared/Effects/Systems/Foil/PS_ItemLocatorStick_Foil_{rarity}.PS_ItemLocatorStick_Foil_{rarity}";
     }
 }

@@ -1,25 +1,23 @@
-﻿using System.Diagnostics;
-using System.Reflection;
-using Borderlands3ModdingLibrary.Hotfixes;
+﻿using Borderlands3ModdingLibrary.Hotfixes;
+using Borderlands3ModdingLibrary.Patches;
 
 namespace Borderlands3ModdingLibrary.Mod;
 
 public static class Mod
 {
-    public static void Create(string name, string author, string description, string version, List<Hotfix> hotfixes)
+    /// <summary>
+    /// Creates a mod
+    /// </summary>
+    /// <param name="name">The name of the mod</param>
+    /// <param name="author">The creator of the mod</param>
+    /// <param name="description">Describe the mod</param>
+    /// <param name="version">Version number</param>
+    /// <param name="installationPath">Export path (Recommended to use ohl-mods folder if using OpenHotfixLoader for easy installation)</param>
+    /// <param name="writeToFile">Whether or not to write the mod to file. Useful if you are testing and don't want to write to fill every time.</param>
+    /// <param name="bundles">A list of hotfix bundles that makes up the content of the mod.</param>
+    public static void Create(string name, string author, string description, string version, string installationPath, bool writeToFile, List<HotfixBundle> bundles) // List<Hotfix> hotfixes
     {
-        string? assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        
-        if (string.IsNullOrEmpty(assemblyPath))
-        {
-            Console.WriteLine("Assembly location is null. Unable to write mod to file.");
-            return;
-        }
-
-        string directoryPath = Path.Combine(assemblyPath, $"export/{author}/{name}");
-
-        string fileName = name.ToLower().Replace(" ", "_");
-        string filePath = Path.Combine(directoryPath, $"{fileName}.bl3hotfix");
+        List<HotfixBundle> enabledHotfixBundles = bundles.FindAll(bundle => bundle.IsEnabled);
 
         string fileContent = $@"
 ###
@@ -28,36 +26,34 @@ public static class Mod
 ### Description: {description}
 ### Version: {version}
 ### Last Update: {DateTime.Now}
+### Total Hotfix Bundles: {enabledHotfixBundles.Count}
+### Total Hotfixes: {enabledHotfixBundles.Sum(bundle => bundle.GetHotfixes().Count)}
+### Total Patches: {enabledHotfixBundles.Sum(bundle => bundle.GetHotfixes().Sum(hotfix => hotfix.GetPatches().Count))}
 ### License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 ### License URL: https://creativecommons.org/licenses/by-sa/4.0/
-### Made using the Borderlands 3 Hotfix Modding C# Library by mw138
+### Made using the Borderlands 3 Hotfix Modding C# Library by mw138 (https://github.com/mw-138/borderlands-3-modding-library)
 ###
 ";
 
         fileContent += "\n";
 
-        foreach (Hotfix hotfix in hotfixes)
+        foreach (HotfixBundle bundle in enabledHotfixBundles)
         {
-            fileContent += hotfix.GetFormattedSparkPatchEntry();
+            fileContent += bundle.GetOutput();
         }
 
         Console.WriteLine(fileContent);
 
-        if (File.Exists(filePath))
-        {
-            File.WriteAllText(filePath, fileContent);
-            Console.WriteLine($"Mod '{name}' updated.");
-        }
-        else
-        {
-            if (!Directory.Exists(directoryPath))
-                Directory.CreateDirectory(directoryPath);
+        if (!writeToFile)
+            return;
 
-            File.WriteAllText(filePath, fileContent);
-            Console.WriteLine($"Mod '{name}' created.");
-        }
+        string fileName = name.ToLower().Replace(" ", "_");
+        string filePath = Path.Combine(installationPath, $"{fileName}.bl3hotfix");
+        bool doesFileExist = File.Exists(filePath);
+        File.WriteAllText(filePath, fileContent);
+        Console.WriteLine($"Mod '{name}' {(doesFileExist ? "updated" : "created")}.");
 
-        if (File.Exists(filePath))
-            Process.Start("explorer.exe", filePath);
+        //if (File.Exists(filePath))
+        //    Process.Start("explorer.exe", filePath);
     }
 }
