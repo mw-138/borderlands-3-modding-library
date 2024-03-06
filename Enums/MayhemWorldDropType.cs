@@ -1,0 +1,30 @@
+﻿namespace Borderlands3ModdingLibrary.Enums;
+
+public enum MayhemWorldDropType
+{
+    HealthSimple,
+    ArmorSimple,
+    ShieldSample,
+    ExpGain,
+    Cash,
+    DropWeightCommon,
+    DropWeightUncommon,
+    DropWeightRare,
+    DropWeightVeryRare,
+    DropWeightLegendary,
+    DropNumberChanceSimple,
+    DropEridiumChanceSimple,
+    LootQuality,
+    DamageActionSkill,
+    DamageMelee,
+    DamageSlide,
+    DamageSlam,
+    DamagePet,
+    DamageEnvironmental,
+    DamagePassive,
+    DamageDealtVehicle,
+    DamageTakenVehicle,
+    DamageGear,
+    PetHealth,
+    CompanionHealth,
+}
