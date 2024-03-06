@@ -13,6 +13,8 @@ public class ReplaceRarityHotfixBundle(
     int sortValue,
     float scoreMultiplier,
     WeaponRarityStats weaponStats,
+    string audioStingerPath,
+    string minimapIconPath,
     bool isEnabled,
     string bundleLabel,
     List<Hotfix> hotfixes = default
@@ -20,8 +22,8 @@ public class ReplaceRarityHotfixBundle(
 {
     public override List<Hotfix> GetHotfixes()
     {
-        return
-        [
+        List<Hotfix> hotfixes = new List<Hotfix>()
+        {
             new Hotfix($"Change {rarity} colors",
             [
                 new SetRarityBeamColorPatch(rarity, color),
@@ -31,6 +33,20 @@ public class ReplaceRarityHotfixBundle(
             new SetRarityWeaponStatsHotfix(rarity, weaponStats),
             new SetRaritySortValueHotfix(rarity, sortValue),
             new SetRarityScoreMultiplierHotfix(rarity, scoreMultiplier)
-        ];
+        };
+
+        if (!string.IsNullOrEmpty(audioStingerPath))
+            hotfixes.Add(new Hotfix("Change audio stinger",
+            [
+                new SetRarityAudioStingerPatch(rarity, audioStingerPath),
+            ]));
+
+        if (!string.IsNullOrEmpty(minimapIconPath))
+            hotfixes.Add(new Hotfix("Change minimap icon",
+            [
+                new SetRarityLootMinimapIconPatch(rarity, minimapIconPath),
+            ]));
+
+        return hotfixes;
     }
 }
