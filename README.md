@@ -10,7 +10,7 @@ Mod.Create(
     "mw138",
     "An example mod description",
     "1.0.0",
-    "C:\\ExampleExportPath",
+    "C:/ExampleExportPath",
     true,
     [
         new HotfixBundle(true, "Vehicle Changes",
