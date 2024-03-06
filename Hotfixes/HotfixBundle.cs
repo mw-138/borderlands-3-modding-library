@@ -2,10 +2,8 @@
 
 namespace Borderlands3ModdingLibrary.Hotfixes;
 
-public class HotfixBundle(bool isEnabled, string bundleLabel, List<Hotfix> hotfixes = default)
+public class HotfixBundle(string bundleLabel, List<Hotfix> hotfixes = default)
 {
-    public bool IsEnabled => isEnabled;
-
     public virtual List<Hotfix> GetHotfixes()
     {
         return hotfixes;
