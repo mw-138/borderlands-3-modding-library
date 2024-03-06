@@ -15,7 +15,7 @@ public class HotfixBundle(bool isEnabled, string bundleLabel, List<Hotfix> hotfi
     {
         string output = string.Empty;
 
-        output += "-----------------------------------------------------------------------------------------------\n\n";
+        output += "# -----------------------------------------------------------------------------------------------\n\n";
 
         output += $"### ----- START OF HOTFIX BUNDLE: {bundleLabel} -----\n\n";
 
