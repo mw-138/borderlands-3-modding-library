@@ -4,7 +4,6 @@ public class Patch(PatchOperation operation, PatchType type, string syntax = "",
 {
     public PatchOperation Operation => operation;
     public PatchType Type => type;
-    public string Syntax => GetFinalSyntax();
     public bool MatchAll => matchAll;
     public int Bitfield => bitfield;
     public string Target => target;
