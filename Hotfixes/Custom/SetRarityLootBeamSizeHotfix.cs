@@ -1,4 +1,5 @@
-﻿using Borderlands3ModdingLibrary.Patches;
+﻿using Borderlands3ModdingLibrary.DataPaths;
+using Borderlands3ModdingLibrary.Patches;
 using Borderlands3ModdingLibrary.Rarities;
 using System.Numerics;
 
