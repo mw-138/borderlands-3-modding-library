@@ -15,14 +15,13 @@ public class ReplaceRarityHotfixBundle(
     WeaponRarityStats weaponStats,
     string audioStingerPath,
     string minimapIconPath,
-    bool isEnabled,
     string bundleLabel,
     List<Hotfix> hotfixes = default
-) : HotfixBundle(isEnabled, bundleLabel, hotfixes)
+) : HotfixBundle(bundleLabel, hotfixes)
 {
     public override List<Hotfix> GetHotfixes()
     {
-        List<Hotfix> hotfixes = new List<Hotfix>()
+        List<Hotfix> hotfixes = new()
         {
             new Hotfix($"Change {rarity} colors",
             [
