@@ -12,10 +12,10 @@ public static class Mod
     /// <param name="author">The creator of the mod</param>
     /// <param name="description">Describe the mod</param>
     /// <param name="version">Version number</param>
-    /// <param name="installationPath">Export path (Recommended to use ohl-mods folder if using OpenHotfixLoader for easy installation)</param>
+    /// <param name="exportPath">Export path (Recommended to use ohl-mods folder if using OpenHotfixLoader for easy installation)</param>
     /// <param name="writeToFile">Whether or not to write the mod to file. Useful if you are testing and don't want to write to fill every time.</param>
     /// <param name="bundles">A list of hotfix bundles that makes up the content of the mod.</param>
-    public static void Create(string name, string author, string description, string version, string installationPath, bool writeToFile, List<HotfixBundle> bundles) // List<Hotfix> hotfixes
+    public static void Create(string name, string author, string description, string version, string exportPath, bool writeToFile, List<HotfixBundle> bundles) // List<Hotfix> hotfixes
     {
         List<HotfixBundle> enabledHotfixBundles = bundles.FindAll(bundle => bundle.IsEnabled);
 
@@ -48,7 +48,7 @@ public static class Mod
             return;
 
         string fileName = name.ToLower().Replace(" ", "_");
-        string filePath = Path.Combine(installationPath, $"{fileName}.bl3hotfix");
+        string filePath = Path.Combine(exportPath, $"{fileName}.bl3hotfix");
         bool doesFileExist = File.Exists(filePath);
         File.WriteAllText(filePath, fileContent);
         Console.WriteLine($"Mod '{name}' {(doesFileExist ? "updated" : "created")}.");
