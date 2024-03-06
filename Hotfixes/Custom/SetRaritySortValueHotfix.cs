@@ -1,4 +1,5 @@
-﻿using Borderlands3ModdingLibrary.Patches;
+﻿using Borderlands3ModdingLibrary.DataPaths;
+using Borderlands3ModdingLibrary.Patches;
 using Borderlands3ModdingLibrary.Rarities;
 
 namespace Borderlands3ModdingLibrary.Hotfixes.Custom;
@@ -15,13 +16,13 @@ public class SetRaritySortValueHotfix(Rarity rarity, int sortValue, string comme
                 $"{RarityDataPaths.GetPath(rarity)},RaritySortValue,0,,{sortValue}",
                 comment: $"Sets the sort value for {rarity} to {sortValue}"
             ),
-            new Patch(
-                PatchOperation.SparkPatchEntry,
-                PatchType.Regular,
-                $"/Game/PatchDLC/Hibiscus/Streaming/Data/RarityData_MoxxiDrink.RarityData_MoxxiDrink,RaritySortValue,0,,{sortValue}",
-                matchAll: true,
-                comment: $"Sets the sort value for {rarity} to {sortValue} - (Alternative)"
-            ),
+            //new Patch(
+            //    PatchOperation.SparkPatchEntry,
+            //    PatchType.Regular,
+            //    $"/Game/PatchDLC/Hibiscus/Streaming/Data/RarityData_MoxxiDrink.RarityData_MoxxiDrink,RaritySortValue,0,,{sortValue}",
+            //    matchAll: true,
+            //    comment: $"Sets the sort value for {rarity} to {sortValue} - (Alternative)"
+            //),
         ];
     }
 
