@@ -1,5 +1,6 @@
 ﻿using Borderlands3ModdingLibrary.Rarities;
 using Borderlands3ModdingLibrary.Classes;
+using Borderlands3ModdingLibrary.DataPaths;
 
 namespace Borderlands3ModdingLibrary.Patches.Custom;
 
