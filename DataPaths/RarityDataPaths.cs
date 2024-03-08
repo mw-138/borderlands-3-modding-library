@@ -6,7 +6,7 @@ public static class RarityDataPaths
 {
     private static string GetRarityNumber(Rarity rarity)
     {
-        return ((int)rarity + 1).ToString("00");
+        return ((int)rarity).ToString("00");
     }
 
     public static string GetPath(Rarity rarity)
