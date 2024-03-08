@@ -12,17 +12,13 @@ public class HotfixBundle(string bundleLabel, List<Hotfix> hotfixes = default)
     public string GetOutput()
     {
         string output = string.Empty;
-
         output += "# -----------------------------------------------------------------------------------------------\n\n";
-
         output += $"### ----- START OF HOTFIX BUNDLE: {bundleLabel} -----\n\n";
 
         foreach (Hotfix hotfix in GetHotfixes())
         {
             bool hasHotfixComment = !string.IsNullOrEmpty(hotfix.GetComment());
-
             string hotfixComment = hasHotfixComment ? hotfix.GetComment() : "Missing Hotfix Label";
-
             output += $"## ----- START OF HOTFIX: {hotfixComment} -----\n\n";
 
             foreach (Patch patch in hotfix.GetPatches())
