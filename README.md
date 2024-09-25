@@ -11,9 +11,8 @@ Mod.Create(
     "An example mod description",
     "1.0.0",
     "C:/ExampleExportPath",
-    true,
     [
-        new HotfixBundle(true, "Vehicle Changes",
+        new HotfixBundle("Vehicle Changes",
         [
             new Hotfix("Vehicle Health",
             [
