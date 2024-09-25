@@ -2,8 +2,11 @@
 
 A C# class library that can be used to create Borderlands 3 hotfix mods in a C# .NET application (console app etc.).
 
-# Example
+# Examples
+## Advanced Example Mod
+[View Example Mod](~Example)
 
+## Simple Example Mod
 ```
 Mod.Create(
     "Example Mod",
