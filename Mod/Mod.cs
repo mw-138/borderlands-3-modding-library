@@ -1,22 +1,26 @@
 ﻿using Borderlands3ModdingLibrary.Hotfixes;
-using Borderlands3ModdingLibrary.Patches;
 
 namespace Borderlands3ModdingLibrary.Mod;
 
 public static class Mod
 {
     /// <summary>
-    /// Creates a mod
+    /// Generates a .bl3hotfix file which loads all containing patches.
     /// </summary>
     /// <param name="name">The name of the mod</param>
     /// <param name="author">The creator of the mod</param>
     /// <param name="description">Describe the mod</param>
     /// <param name="version">Version number</param>
     /// <param name="exportPath">Export path (Recommended to use ohl-mods folder if using OpenHotfixLoader for easy installation)</param>
-    /// <param name="writeToFile">Whether or not to write the mod to file. Useful if you are testing and don't want to write to fill every time.</param>
     /// <param name="bundles">A list of hotfix bundles that makes up the content of the mod.</param>
-    public static void Create(string name, string author, string description, string version, string exportPath, bool writeToFile, List<HotfixBundle> bundles)
+    public static void Create(string name, string author, string description, string version, string exportPath, List<HotfixBundle> bundles)
     {
+        if (bundles.Count == 0)
+        {
+            Console.WriteLine("There are no bundles listed. Add a bundle to generate the hotfix file.");
+            return;
+        }
+
         string fileContent = $@"
 ###
 ### Name: {name}
@@ -40,16 +44,9 @@ public static class Mod
 
         Console.WriteLine(fileContent);
 
-        if (!writeToFile)
-            return;
-
         string fileName = name.ToLower().Replace(" ", "_");
         string filePath = Path.Combine(exportPath, $"{fileName}.bl3hotfix");
-        bool doesFileExist = File.Exists(filePath);
         File.WriteAllText(filePath, fileContent);
-        Console.WriteLine($"Mod '{name}' {(doesFileExist ? "updated" : "created")}.");
-
-        //if (File.Exists(filePath))
-        //    Process.Start("explorer.exe", filePath);
+        Console.WriteLine($"Mod '{name}' {(File.Exists(filePath) ? "updated" : "created")}.");
     }
 }
