@@ -26,22 +26,122 @@ public class WeaponRarityStats(float damageScale, float maxAccuracyScale, float 
     }
 }
 
-public class CommonWeaponRarityStats(float damageScale = 1f, float maxAccuracyScale = 1.2f, float spreadScale = 1.35f, float fireRateScale = 0.9f, float recoilHeightScale = 1.375f, float recoilWidthScale = 1.35f, float swayScale = 1.3f, float elementalChanceScale = 0.8f, float elementalDamageMultiplierScale = 0.8f) : WeaponRarityStats(damageScale, maxAccuracyScale, spreadScale, fireRateScale, recoilHeightScale, recoilWidthScale, swayScale, elementalChanceScale, elementalDamageMultiplierScale)
+public class CommonWeaponRarityStats(
+    float damageScale = 1f,
+    float maxAccuracyScale = 1.2f,
+    float spreadScale = 1.35f,
+    float fireRateScale = 0.9f,
+    float recoilHeightScale = 1.375f,
+    float recoilWidthScale = 1.35f,
+    float swayScale = 1.3f,
+    float elementalChanceScale = 0.8f,
+    float elementalDamageMultiplierScale = 0.8f
+) : WeaponRarityStats(
+    damageScale,
+    maxAccuracyScale,
+    spreadScale,
+    fireRateScale,
+    recoilHeightScale,
+    recoilWidthScale,
+    swayScale,
+    elementalChanceScale,
+    elementalDamageMultiplierScale
+)
 {
 }
 
-public class UncommonWeaponRarityStats(float damageScale = 1.05f, float maxAccuracyScale = 1.1f, float spreadScale = 1.2f, float fireRateScale = 0.95f, float recoilHeightScale = 1.225f, float recoilWidthScale = 1.225f, float swayScale = 1.2f, float elementalChanceScale = 0.9f, float elementalDamageMultiplierScale = 0.9f) : WeaponRarityStats(damageScale, maxAccuracyScale, spreadScale, fireRateScale, recoilHeightScale, recoilWidthScale, swayScale, elementalChanceScale, elementalDamageMultiplierScale)
+public class UncommonWeaponRarityStats(
+    float damageScale = 1.05f,
+    float maxAccuracyScale = 1.1f,
+    float spreadScale = 1.2f,
+    float fireRateScale = 0.95f,
+    float recoilHeightScale = 1.225f,
+    float recoilWidthScale = 1.225f,
+    float swayScale = 1.2f,
+    float elementalChanceScale = 0.9f,
+    float elementalDamageMultiplierScale = 0.9f
+) : WeaponRarityStats(
+    damageScale,
+    maxAccuracyScale,
+    spreadScale,
+    fireRateScale,
+    recoilHeightScale,
+    recoilWidthScale,
+    swayScale,
+    elementalChanceScale,
+    elementalDamageMultiplierScale
+)
 {
 }
 
-public class RareWeaponRarityStats(float damageScale = 1.1f, float maxAccuracyScale = 1f, float spreadScale = 1.025f, float fireRateScale = 1f, float recoilHeightScale = 1.1f, float recoilWidthScale = 1.1f, float swayScale = 1.1f, float elementalChanceScale = 1f, float elementalDamageMultiplierScale = 1f) : WeaponRarityStats(damageScale, maxAccuracyScale, spreadScale, fireRateScale, recoilHeightScale, recoilWidthScale, swayScale, elementalChanceScale, elementalDamageMultiplierScale)
+public class RareWeaponRarityStats(
+    float damageScale = 1.1f,
+    float maxAccuracyScale = 1f,
+    float spreadScale = 1.025f,
+    float fireRateScale = 1f,
+    float recoilHeightScale = 1.1f,
+    float recoilWidthScale = 1.1f,
+    float swayScale = 1.1f,
+    float elementalChanceScale = 1f,
+    float elementalDamageMultiplierScale = 1f
+) : WeaponRarityStats(
+    damageScale,
+    maxAccuracyScale,
+    spreadScale,
+    fireRateScale,
+    recoilHeightScale,
+    recoilWidthScale,
+    swayScale,
+    elementalChanceScale,
+    elementalDamageMultiplierScale
+)
 {
 }
 
-public class EpicWeaponRarityStats(float damageScale = 1.15f, float maxAccuracyScale = 0.95f, float spreadScale = 1f, float fireRateScale = 1.025f, float recoilHeightScale = 1f, float recoilWidthScale = 1f, float swayScale = 1f, float elementalChanceScale = 1.1f, float elementalDamageMultiplierScale = 1.05f) : WeaponRarityStats(damageScale, maxAccuracyScale, spreadScale, fireRateScale, recoilHeightScale, recoilWidthScale, swayScale, elementalChanceScale, elementalDamageMultiplierScale)
+public class EpicWeaponRarityStats(
+    float damageScale = 1.15f,
+    float maxAccuracyScale = 0.95f,
+    float spreadScale = 1f,
+    float fireRateScale = 1.025f,
+    float recoilHeightScale = 1f,
+    float recoilWidthScale = 1f,
+    float swayScale = 1f,
+    float elementalChanceScale = 1.1f,
+    float elementalDamageMultiplierScale = 1.05f
+) : WeaponRarityStats(
+    damageScale,
+    maxAccuracyScale,
+    spreadScale,
+    fireRateScale,
+    recoilHeightScale,
+    recoilWidthScale,
+    swayScale,
+    elementalChanceScale,
+    elementalDamageMultiplierScale
+)
 {
 }
 
-public class LegendaryWeaponRarityStats(float damageScale = 1.2f, float maxAccuracyScale = 0.95f, float spreadScale = 0.95f, float fireRateScale = 1.05f, float recoilHeightScale = 1f, float recoilWidthScale = 1f, float swayScale = 1f, float elementalChanceScale = 1.2f, float elementalDamageMultiplierScale = 1.05f) : WeaponRarityStats(damageScale, maxAccuracyScale, spreadScale, fireRateScale, recoilHeightScale, recoilWidthScale, swayScale, elementalChanceScale, elementalDamageMultiplierScale)
+public class LegendaryWeaponRarityStats(
+    float damageScale = 1.2f,
+    float maxAccuracyScale = 0.95f,
+    float spreadScale = 0.95f,
+    float fireRateScale = 1.05f,
+    float recoilHeightScale = 1f,
+    float recoilWidthScale = 1f,
+    float swayScale = 1f,
+    float elementalChanceScale = 1.2f,
+    float elementalDamageMultiplierScale = 1.05f
+) : WeaponRarityStats(
+    damageScale,
+    maxAccuracyScale,
+    spreadScale,
+    fireRateScale,
+    recoilHeightScale,
+    recoilWidthScale,
+    swayScale,
+    elementalChanceScale,
+    elementalDamageMultiplierScale
+)
 {
 }

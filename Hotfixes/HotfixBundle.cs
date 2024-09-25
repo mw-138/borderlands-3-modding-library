@@ -4,10 +4,7 @@ namespace Borderlands3ModdingLibrary.Hotfixes;
 
 public class HotfixBundle(string bundleLabel, List<Hotfix> hotfixes = default)
 {
-    public virtual List<Hotfix> GetHotfixes()
-    {
-        return hotfixes;
-    }
+    public virtual List<Hotfix> GetHotfixes() => hotfixes;
 
     public string GetOutput()
     {
