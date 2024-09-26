@@ -25,7 +25,7 @@ public class HotfixBundle(string bundleLabel, List<Hotfix> hotfixes = default)
                 if (hasPatchComment)
                     output += $"# {patch.GetComment()}\n";
 
-                output += $"{patch.FinalOutput}\n\n";
+                output += $"{patch.Output}\n\n";
             }
 
             output += $"## ----- END OF HOTFIX: {hotfixComment} -----\n\n";
