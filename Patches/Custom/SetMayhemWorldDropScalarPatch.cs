@@ -2,9 +2,9 @@
 
 namespace Borderlands3ModdingLibrary.Patches.Custom;
 
-public class SetMayhemWorldDropScalarPatch(int mayhemLevel, MayhemWorldDropType dropType, float scalar, PatchOperation operation = PatchOperation.SparkPatchEntry, PatchType type = PatchType.DataTable, string syntax = "", bool matchAll = false, int bitfield = 0, string target = "", string comment = "") : Patch(operation, type, syntax, matchAll, bitfield, target, comment)
+public class SetMayhemWorldDropScalarPatch(int mayhemLevel, MayhemWorldDropType dropType, float scalar, PatchOperation operation = PatchOperation.SparkPatchEntry, PatchType type = PatchType.DataTable, string payload = "", bool matchAll = false, int bitfield = 0, string target = "", string comment = "") : Patch(operation, type, payload, matchAll, bitfield, target, comment)
 {
-    protected override string GetFinalSyntax()
+    protected override string GetPayload()
     {
         string scalarName = dropType switch
         {

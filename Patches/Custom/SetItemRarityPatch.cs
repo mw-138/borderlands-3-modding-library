@@ -3,9 +3,9 @@ using Borderlands3ModdingLibrary.Rarities;
 
 namespace Borderlands3ModdingLibrary.Patches.Custom;
 
-public class SetItemRarityPatch(string itemPath, Rarity rarity, PatchOperation operation = PatchOperation.SparkPatchEntry, PatchType type = PatchType.Regular, string syntax = "", bool matchAll = false, int bitfield = 0, string target = "", string comment = "") : Patch(operation, type, syntax, matchAll, bitfield, target, comment)
+public class SetItemRarityPatch(string itemPath, Rarity rarity, PatchOperation operation = PatchOperation.SparkPatchEntry, PatchType type = PatchType.Regular, string payload = "", bool matchAll = false, int bitfield = 0, string target = "", string comment = "") : Patch(operation, type, payload, matchAll, bitfield, target, comment)
 {
-    protected override string GetFinalSyntax()
+    protected override string GetPayload()
     {
         return $"{itemPath},RarityData,0,,OakInventoryRarityData'\"{RarityDataPaths.GetPath(rarity)}\"'";
     }
