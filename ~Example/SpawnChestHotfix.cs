@@ -32,7 +32,7 @@ public class SpawnChestHotfix(int id, float posX, float posY, float posZ) : Hotf
                 PatchType.Regular,
                 $"{chestMeshPath},RelativeRotation,0,,(Pitch=0,Yaw=0,Roll=0)",
                 target: mapName,
-                comment: "Set Relative Position",
+                comment: "Set Relative Rotation",
                 bitfield: 1
             ),
             new(
